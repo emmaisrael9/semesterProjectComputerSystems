@@ -15,9 +15,6 @@ int programWorking (char *file1, char *file2,char *array1, char* array2);
 int userErrorCheck(char *file1,char *file2);
 int checkNotEmptyFile(char *file);
 
-/**
- * Debugger Functions
- */
 void debugger(char *file1, char *file2, char *array1, char *array2);
 char *processDefinitionFile1(char *defFile, char *array1);
 int programWorking1(char *defFile, char *inputFile,char *array1, char *array2, int step);
@@ -199,7 +196,7 @@ int testProcessdefinitionFile(char *file,char *array){
   return 0;
 }
 
-//////////////////////////////////////////////////////////////////begining of the debugger code ///////////////////////////////////////////////////////////////////
+///////////////////// debugger//////////////////////////////////////
 
 void debugger(char *file1, char *file2, char *array1, char *array2){
   int linesInput=numberOfLines(file2);
@@ -244,7 +241,6 @@ char *processDefinitionFile1(char *defFile, char *array1){
     count += 3;
   }
   fclose(file);
-  int maxLines=numberOfLines(defFile);
   return array1;
 }
 
@@ -267,6 +263,7 @@ int programWorking1(char *defFile, char *inputFile,char *array1, char *array2, i
     }
     count+=3; //loop through b 3 times each time. add 3 each time to make up for the 3 loops.
   }
+
   // Iterate through 2d array to compare 3 significant characters per line in the input and definition arrays:
   count = 0; // reset count to now represent each step.
   for (int i = 0; i < linesInInputFile;i++) {
@@ -276,17 +273,15 @@ int programWorking1(char *defFile, char *inputFile,char *array1, char *array2, i
       }
     }
     if (count==step){
-       printf("at step %d, input %c transitions FSM from state %c to state %c\n",count, currentChar[count], currentState, updatedState);
+      printf("at step %d, input %c transitions FSM from state %c to state %c\n ",count, currentChar[count], currentState, updatedState);
     }
-      
     count += 1;
     currentState = updatedState;
-    
   }
   if (step==linesInInputFile){
     printf("after %d steps, state machine finished successfully at state %c\n",count, currentState);
   }
-  return updatedState;
+  return currentState;
 }
 
 char *processInputFile1(char *inputFile,char *array2){
@@ -298,7 +293,8 @@ char *processInputFile1(char *inputFile,char *array2){
     if ((inputArray[0]>='A' && inputArray[0]<='Z') ||inputArray[0]>='a' && inputArray[0]<='z'){
     array2[count++] = inputArray[0];
     }
-  fclose(file);
-  return array2;
   }
+  
+    return array2;
 }
+
