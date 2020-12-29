@@ -15,6 +15,9 @@ int programWorking (char *file1, char *file2,char *array1, char* array2);
 int userErrorCheck(char *file1,char *file2);
 int checkNotEmptyFile(char *file);
 
+/**
+ * Debugger Functions
+ */
 void debugger(char *file1, char *file2, char *array1, char *array2);
 char *processDefinitionFile1(char *defFile, char *array1);
 int programWorking1(char *defFile, char *inputFile,char *array1, char *array2, int step);
@@ -196,7 +199,7 @@ int testProcessdefinitionFile(char *file,char *array){
   return 0;
 }
 
-///////////////////// debugger//////////////////////////////////////
+//////////////////////////////////////////////////////////////////begining of the debugger code ///////////////////////////////////////////////////////////////////
 
 void debugger(char *file1, char *file2, char *array1, char *array2){
   int linesInput=numberOfLines(file2);
